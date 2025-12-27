@@ -1,7 +1,7 @@
 import '$lib/supabase'
 import supabase_admin from '$lib/supabase/admin'
 import { createSupabaseServerClient } from '@supabase/auth-helpers-sveltekit'
-import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_PUBLIC_KEY } from '$env/dynamic/public'
+import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_PUBLIC_KEY } from '$env/static/public'
 
 /** @type {import('@sveltejs/kit').Handle} */
 export async function handle({ resolve, event }) {
