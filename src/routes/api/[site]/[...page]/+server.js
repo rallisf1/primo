@@ -53,32 +53,32 @@ export async function GET({ url, params }) {
       .match({ 'site.url': params.site, 'parent.url': page_url }),
     options.sections === '*'
       ? supabase_admin
-          .from('sections')
-          .select(
-            parent_url
-              ? `*, symbol(name, content), page!inner( url, site!inner(url), parent!inner(url) )`
-              : `*, symbol(name, content), page!inner( url, site!inner(url) )`
-          )
-          .match({
-            'page.url': page_url,
-            'page.site.url': params.site,
-            ...(parent_url ? { 'page.parent.url': parent_url } : {}),
-          })
-          .order('index')
+        .from('sections')
+        .select(
+          parent_url
+            ? `*, symbol(name, content), page!inner( url, site!inner(url), parent!inner(url) )`
+            : `*, symbol(name, content), page!inner( url, site!inner(url) )`
+        )
+        .match({
+          'page.url': page_url,
+          'page.site.url': params.site,
+          ...(parent_url ? { 'page.parent.url': parent_url } : {}),
+        })
+        .order('index')
       : supabase_admin
-          .from('sections')
-          .select(
-            parent_url
-              ? `*, symbol(name, content), page!inner( url, site!inner(url), parent!inner(url) )`
-              : `*, poo:content->en, symbol(name, content), page!inner( url, site!inner(url) )`
-          )
-          .match({
-            'page.url': page_url,
-            'page.site.url': params.site,
-            ...(parent_url ? { 'page.parent.url': parent_url } : {}),
-          })
-          .in('id', options.sections.split(','))
-          .order('index'),
+        .from('sections')
+        .select(
+          parent_url
+            ? `*, symbol(name, content), page!inner( url, site!inner(url), parent!inner(url) )`
+            : `*, poo:content->${lang}, symbol(name, content), page!inner( url, site!inner(url) )`
+        )
+        .match({
+          'page.url': page_url,
+          'page.site.url': params.site,
+          ...(parent_url ? { 'page.parent.url': parent_url } : {}),
+        })
+        .in('id', options.sections.split(','))
+        .order('index'),
   ])
 
   const site = {
