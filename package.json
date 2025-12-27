@@ -15,7 +15,7 @@
   "dependencies": {
     "@fontsource/fira-code": "^5.0.5",
     "@iconify/svelte": "^2.2.1",
-    "@primocms/builder": "^0.1.66",
+    "@primocms/builder": "../builder",
     "@rollup/browser": "^3.28.0",
     "@supabase/auth-helpers-sveltekit": "^0.10.2",
     "@supabase/supabase-js": "^2.31.0",
@@ -46,6 +46,7 @@
     "randomstring": "^1.2.3",
     "showdown-highlight": "^3.1.0",
     "svelte": "^3.59.2",
+    "svelte-adapter-bun": "^0.5.2",
     "svelte-check": "^2.9.2",
     "svelte-json-tree": "^1.0.0",
     "svelte-preprocess": "^5.0.4",

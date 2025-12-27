@@ -125,6 +125,7 @@
 			await supabase.storage.from(bucket).upload(key, file, options)
 			if (bucket === 'images') {
 				const { data: res } = supabase.storage.from(bucket).getPublicUrl(key)
+				if(res.publicUrl.indexOf('https://db') === 0) res.publicUrl.replace('https://db', 'https://cdn')
 				return res.publicUrl
 			}
 		}
