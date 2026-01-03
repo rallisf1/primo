@@ -37,17 +37,17 @@ export async function load(event) {
 
       const user_final = server_member
         ? {
-          ...user,
-          server_member: true,
-          admin: server_member.admin,
-          role: server_member.role,
-        }
+            ...user,
+            server_member: true,
+            admin: server_member.admin,
+            role: server_member.role,
+          }
         : {
-          ...user,
-          server_member: false,
-          admin: false,
-          role: collaborator.role,
-        }
+            ...user,
+            server_member: false,
+            admin: false,
+            role: collaborator.role,
+          }
 
       return {
         sites: sites || [],
@@ -60,8 +60,8 @@ export async function load(event) {
       (site) =>
         /*user is server member*/ user.server_member ||
         /*user is site collaborator*/ site.collaborators.some(
-        (collaborator) => collaborator.user === user.id
-      )
+          (collaborator) => collaborator.user === user.id
+        )
     )
 
     return {
